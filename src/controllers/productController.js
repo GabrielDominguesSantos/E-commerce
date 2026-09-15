@@ -2,12 +2,12 @@ const Product = require('../models/Product');
 
 exports.createProduct = async (req,res) => {
     try{
-        const { name, price, description, inStock } = req.body;
+        const { name, category, price, inStock } = req.body;
 
         const newProduct = await Product.create({
             name,
+            category,
             price,
-            description,
             inStock,
         });
 

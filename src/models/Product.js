@@ -12,13 +12,19 @@ const productSchema = new mongoose.Schema(
             required: [true, 'O preço do produto é obrigatório'],
             min: [0, 'O preço do produto não pode ser negativo'],
         },
-        description: {
+        category: {
             type: String,
-            trim: true,
+            required: [true, 'Informar a categoria do produto é obrigatório'],
         },
         inStock: {
-            type: Boolean,
-            default: true,
+            type: Number,
+            required: [true, 'Informar a quantidade em estoque é obrigatório'],
+            min: [0, 'O estoque não pode ser negativo'],
+            default: 0,
+        },
+        specs: {
+            type: Object,
+            default: {},
         },
     },
     {
