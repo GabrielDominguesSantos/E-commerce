@@ -16,6 +16,11 @@ const productSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Informar a categoria do produto é obrigatório'],
         },
+        description: {
+            type: String,
+            trim: true,
+            default: '',
+        },
         inStock: {
             type: Number,
             required: [true, 'Informar a quantidade em estoque é obrigatório'],
@@ -31,5 +36,7 @@ const productSchema = new mongoose.Schema(
         timestamps: true,
     }
 );
+
+productSchema.index({ name: 'text', description: 'text' });
 
 module.exports = mongoose.model('Product', productSchema);
